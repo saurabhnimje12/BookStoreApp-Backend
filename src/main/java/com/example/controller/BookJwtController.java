@@ -1,5 +1,11 @@
 package com.example.controller;
 
+/**
+ * BookJwtController.java
+ * This controller handles book-related operations with JWT authentication.
+ * It allows adding, deleting, and updating books based on user roles.
+ */
+
 import com.example.dto.DtoToBookEntity;
 import com.example.service.BookService;
 import org.springframework.http.HttpStatus;
@@ -16,6 +22,12 @@ public class BookJwtController {
         this.bookService = bookService;
     }
 
+    /**
+     * Adds a new book.
+     * @param role the role of the user making the request
+     * @param dtoToBookEntity the DTO containing book details
+     * @return a ResponseEntity with a success message or an error message
+     */
     @PostMapping("/addBook")
     public ResponseEntity<String> addBook(@RequestAttribute("role") String role, @RequestBody DtoToBookEntity dtoToBookEntity) {
         if ("ADMIN".equalsIgnoreCase(role)) {
@@ -25,6 +37,12 @@ public class BookJwtController {
         }
     }
 
+    /**
+     * Deletes a book by its ID.
+     * @param role the role of the user making the request
+     * @param bookId the ID of the book to delete
+     * @return a ResponseEntity with a success message or an error message
+     */
     @DeleteMapping("/deleteBook/{bookId}")
     public ResponseEntity<String> addBook(@RequestAttribute("role") String role, @PathVariable Long bookId) {
         if ("ADMIN".equalsIgnoreCase(role)) {
@@ -34,6 +52,13 @@ public class BookJwtController {
         }
     }
 
+    /**
+     * Updates a book's details.
+     * @param role the role of the user making the request
+     * @param bookId the ID of the book to update
+     * @param dtoToBookEntity the DTO containing updated book details
+     * @return a ResponseEntity with a success message or an error message
+     */
     @PatchMapping("/updateBook/{bookId}")
     public ResponseEntity<String> updateBook(@RequestAttribute("role") String role, @PathVariable Long bookId, @RequestBody DtoToBookEntity dtoToBookEntity) {
         if ("ADMIN".equalsIgnoreCase(role)) {
@@ -42,8 +67,4 @@ public class BookJwtController {
             return new ResponseEntity<String>("Token is NOT Valid to Update Book", HttpStatus.NOT_FOUND);
         }
     }
-//<<<<<<< HEAD
 }
-//=======
-
-//>>>>>>> 28b168b246af6591139ee352e390a3a82f0c33ec

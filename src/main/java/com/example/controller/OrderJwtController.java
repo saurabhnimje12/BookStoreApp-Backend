@@ -1,4 +1,9 @@
 package com.example.controller;
+/**
+ * OrderJwtController.java
+ * This controller handles order-related operations with JWT authentication.
+ * It allows placing, canceling, and retrieving orders based on user roles.
+ */
 
 import com.example.dto.DtoToAddressEntity;
 import com.example.dto.DtoToOrderEntity;
@@ -20,6 +25,13 @@ public class OrderJwtController {
         this.orderService = orderService;
     }
 
+    /**
+     * Places an order for a user.
+     * @param role the role of the user making the request
+     * @param userId the ID of the user placing the order
+     * @param dtoToAddressEntity the DTO containing address details for the order
+     * @return a ResponseEntity with the created Order or an error message
+     */
     @PostMapping("/orderPlace")
     public ResponseEntity<?> placeOrder(@RequestAttribute("role") String role, @RequestAttribute("userId") Long userId, @RequestBody DtoToAddressEntity dtoToAddressEntity) {
         if ("USER".equalsIgnoreCase(role)) {
@@ -29,6 +41,13 @@ public class OrderJwtController {
         }
     }
 
+    /**
+     * Cancels an order by its ID.
+     * @param role the role of the user making the request
+     * @param userId the ID of the user whose order is being canceled
+     * @param orderId the ID of the order to cancel
+     * @return a ResponseEntity with a success message or an error message
+     */
     @PostMapping("cancelOrder/{orderId}")
     public ResponseEntity<String> cancelOrder(@RequestAttribute("role") String role, @RequestAttribute("userId") Long userId, @PathVariable Long orderId){
         if ("USER".equalsIgnoreCase(role)) {
@@ -38,6 +57,12 @@ public class OrderJwtController {
         }
     }
 
+    /**
+     * Retrieves all orders for a user or admin.
+     * @param role the role of the user making the request
+     * @param userId the ID of the user whose orders are being retrieved
+     * @return a ResponseEntity with a list of orders or an error message
+     */
     @GetMapping("/getAllOrders")
     public ResponseEntity<?> getAllOrders(@RequestAttribute("role") String role, @RequestAttribute("userId") Long userId){
         if ("ADMIN".equalsIgnoreCase(role)) {
@@ -56,8 +81,5 @@ public class OrderJwtController {
 //        }
 //    }
 
-//<<<<<<< HEAD
-//
-//=======
-//>>>>>>> 28b168b246af6591139ee352e390a3a82f0c33ec
+
 }
