@@ -11,10 +11,4 @@ import java.util.List;
 @Repository
 public interface CartRepo extends JpaRepository<Cart, Long> {
     List<Cart> findByUser(User user);
-//
-//    List<Cart> findByUserId(Long userId);
-//
-//    @Query("SELECT c FROM Cart c WHERE c.user.id = :userId")
-//    List<Cart> findByUser(@Param("userId") Long userId);
-
 }

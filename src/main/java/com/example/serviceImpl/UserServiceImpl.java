@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             user.setRegistrationDate(LocalDate.now());
             user.setUpdateDate(LocalDate.now());
             userRepo.save(user);
-            return "User Added Successfully!!";
+            return "User registered successfully!!";
         }
     }
 
