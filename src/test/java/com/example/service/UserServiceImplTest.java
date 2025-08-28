@@ -43,7 +43,7 @@ class UserServiceImplTest {
 
         String result = userService.userRegistration(dto);
 
-        assertThat(result).isEqualTo("User Added Successfully!!");
+        assertThat(result).isEqualTo("User registered successfully!!");
         verify(userRepo).save(any(User.class));
     }
 
