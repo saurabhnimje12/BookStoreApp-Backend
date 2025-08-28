@@ -6,14 +6,11 @@ package com.example.controller;
  */
 
 import com.example.dto.DtoToAddressEntity;
-import com.example.dto.DtoToOrderEntity;
 import com.example.entity.Order;
 import com.example.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/orderApi")
@@ -71,15 +68,4 @@ public class OrderJwtController {
             return new ResponseEntity<String>("Token is NOT Valid to Get All Cart!!", HttpStatus.NOT_FOUND);
         }
     }
-
-//    @GetMapping("/getAllOrdersForUser")
-//    public ResponseEntity<?> getAllOrdersForUser(@RequestAttribute("role") String role, @RequestAttribute("userId") Long userId){
-//        if ("USER".equalsIgnoreCase(role)) {
-//            return new ResponseEntity<>(orderService.getAllOrdersForUser(userId), HttpStatus.CREATED);
-//        } else {
-//            return new ResponseEntity<String>("Token is NOT Valid to Get Cart!!", HttpStatus.NOT_FOUND);
-//        }
-//    }
-
-
 }

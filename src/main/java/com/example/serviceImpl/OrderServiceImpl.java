@@ -95,31 +95,4 @@ public class OrderServiceImpl implements OrderService {
         }
         return orderList;
     }
-
-//    @Override
-//    public Object getAllOrdersForUser(Long userId) {
-////        Optional<User> userOptional = userRepo.findById(userId);
-////        userRepo.findById(userId);
-////        if (userOptional.isEmpty()) {
-////            return "Enter a Valid Token";
-////        }
-//        List<Order> userOrders = orderRepo.findByUserId(userId);
-//        if (userOrders.isEmpty()){
-//            return "No Order Is Present!!";
-//        }
-//        return userOrders;
-//    }
-
-
-//    private Order dtoToOrderConverter(DtoToOrderEntity dtoToOrderEntity) {
-//        Order order = new Order();
-//        order.setOrderDate(LocalDate.now());
-////        order.setOrderPrice();
-////        order.setOrderQuantity();
-//        order.setOrderAddress(dtoToOrderEntity.getOrderAddress());
-////        order.setUser();
-////        order.setBook();
-//        order.setCancelOrder(false);
-//        return order;
-//    }
 }
